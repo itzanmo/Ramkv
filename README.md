@@ -1,4 +1,4 @@
-```markdown
+
 # ramkv
 
 a minimal, actor-based in-memory key-value store built over raw tcp using a custom binary wire protocol.
@@ -166,4 +166,4 @@ python3 test_client.py
 * **actor serialization vs read parallelism:** routing all traffic through `Processor` avoids mutex locks entirely, but sequential execution means heavy `GET` queries can back up writes. a future refactor could use a sharded `sync.RWMutex` map for concurrent reads.
 * **in-memory log fragmentation:** updating a key with a larger payload appends to the tail of the slice, leaving stale bytes behind in `ledger`. because it's RAM-backed, memory grows until process termination unless a compaction routine runs.
 * **per-request channel overhead:** each worker command instantiates a transient `returnpipe` channel for synchronization. reusing channels or moving to connection-bound queues would drop GC pressure under high RPS.
-```
+
