@@ -1,0 +1,22 @@
+Set-Content .gitignore @"
+# Binaries and builds
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/bin/
+/dist/
+/build/
+
+# IDE / OS junk
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Env / local config
+*.env
+*.local
+"@
